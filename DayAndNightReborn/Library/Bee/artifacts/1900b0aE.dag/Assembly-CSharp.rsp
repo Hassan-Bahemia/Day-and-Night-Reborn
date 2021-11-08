@@ -334,10 +334,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
-"Assets/SampleSceneAssets/Scripts/LookWithMouse.cs"
-"Assets/SampleSceneAssets/Scripts/PlayerMovement.cs"
-"Assets/SampleSceneAssets/Scripts/SimpleCameraController.cs"
-"Assets/SampleSceneAssets/TutorialInfo/Scripts/Readme.cs"
+"Assets/Scripts/Procedural Generation/MapDisplay.cs"
+"Assets/Scripts/Procedural Generation/MapGenerator.cs"
+"Assets/Scripts/Procedural Generation/MapGeneratorEditor.cs"
+"Assets/Scripts/Procedural Generation/NoiseMap.cs"
 -langversion:8.0
 
 /deterministic
