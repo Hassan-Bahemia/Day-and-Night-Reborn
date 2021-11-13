@@ -337,6 +337,7 @@
 "Assets/Scripts/Procedural Generation/MapDisplay.cs"
 "Assets/Scripts/Procedural Generation/MapGenerator.cs"
 "Assets/Scripts/Procedural Generation/MapGeneratorEditor.cs"
+"Assets/Scripts/Procedural Generation/MapTextureGenerator.cs"
 "Assets/Scripts/Procedural Generation/NoiseMap.cs"
 -langversion:8.0
 
