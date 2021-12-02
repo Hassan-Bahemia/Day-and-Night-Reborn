@@ -335,6 +335,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/Procedural Generation/EndlessTerrain.cs"
+"Assets/Scripts/Procedural Generation/FalloffGenerator.cs"
 "Assets/Scripts/Procedural Generation/MapDisplay.cs"
 "Assets/Scripts/Procedural Generation/MapGenerator.cs"
 "Assets/Scripts/Procedural Generation/MapGeneratorEditor.cs"

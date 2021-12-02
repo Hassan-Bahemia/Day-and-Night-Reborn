@@ -11,12 +11,15 @@ namespace Procedural_Generation
         {
             NoiseMap,
             ColourMap,
-            MeshMap
+            MeshMap,
+            FalloffMap
         };
 
         public DrawMode drawMode;
 
-        public const int mapChunkSize = 241;
+        public NoiseMap.NormalizeMode normalizeMode;
+
+        public const int mapChunkSize = 239;
         [Range(0, 6)] public int editorPreviewLOD;
         public float noiseScale;
 
@@ -27,6 +30,8 @@ namespace Procedural_Generation
         public int seed;
         public Vector2 offset;
 
+        public bool useFalloff;
+
         public float meshHeightMultiplier;
         public AnimationCurve meshHeightCurve;
 
@@ -34,8 +39,15 @@ namespace Procedural_Generation
 
         public TerrainType[] regions;
 
+        private float[,] falloffMap;
+
         Queue<MapThreadInfo<MapData>> mapDataThreadInfoQueue = new Queue<MapThreadInfo<MapData>>();
         Queue<MapThreadInfo<MeshData>> meshDataThreadInfoQueue = new Queue<MapThreadInfo<MeshData>>();
+
+        private void Awake()
+        {
+            falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
+        }
 
         public void DrawMapInEditor()
         {
@@ -53,6 +65,8 @@ namespace Procedural_Generation
                     MeshGenerator.GenerateTerrainMesh(mapData.heightMap, meshHeightMultiplier, meshHeightCurve,
                         editorPreviewLOD),
                     MapTextureGenerator.TextureFromColourMap(mapData.colourMap, mapChunkSize, mapChunkSize));
+            else if (drawMode == DrawMode.FalloffMap)
+               display.DrawTexture(MapTextureGenerator.TextureFromHeightMap(FalloffGenerator.GenerateFalloffMap(mapChunkSize))); 
         }
 
         public void RequestMapData(Vector2 centre, Action<MapData> callback)
@@ -104,21 +118,25 @@ namespace Procedural_Generation
 
         MapData GenerateMapData(Vector2 centre)
         {
-            float[,] noiseMap = NoiseMap.GenerateNoiseMap(mapChunkSize, mapChunkSize, seed, noiseScale, octaves,
-                persistance, lacunarity, centre + offset);
+            float[,] noiseMap = NoiseMap.GenerateNoiseMap(mapChunkSize + 2, mapChunkSize + 2, seed, noiseScale, octaves,
+                persistance, lacunarity, centre + offset, normalizeMode);
 
             Color[] colourMap = new Color[mapChunkSize * mapChunkSize];
             for (int y = 0; y < mapChunkSize; y++)
             {
                 for (int x = 0; x < mapChunkSize; x++)
                 {
+                    if (useFalloff) {
+                        noiseMap[x, y] = Mathf.Clamp01(noiseMap[x, y] - falloffMap[x, y]);
+                    }
                     float currentHeight = noiseMap[x, y];
                     for (int i = 0; i < regions.Length; i++)
                     {
-                        if (currentHeight <= regions[i].height)
+                        if (currentHeight >= regions[i].height)
                         {
                             colourMap[y * mapChunkSize + x] = regions[i].colour;
-                            break;
+                        } else {
+                            break;  
                         }
                     }
                 }
@@ -135,6 +153,8 @@ namespace Procedural_Generation
             if (octaves < 0) {
                 octaves = 0;
             }
+
+            falloffMap = FalloffGenerator.GenerateFalloffMap(mapChunkSize);
         }
 
         struct MapThreadInfo<T>
