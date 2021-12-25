@@ -10,13 +10,24 @@
           <e p="Procedural Generation" t="Include">
             <e p="EndlessTerrain.cs" t="Include" />
             <e p="FalloffGenerator.cs" t="Include" />
+            <e p="HideOnPlay.cs" t="Include" />
             <e p="MapDisplay.cs" t="Include" />
             <e p="MapGenerator.cs" t="Include" />
             <e p="MapGeneratorEditor.cs" t="Include" />
             <e p="MapTextureGenerator.cs" t="Include" />
             <e p="MeshGenerator.cs" t="Include" />
             <e p="NoiseMap.cs" t="Include" />
+            <e p="PG Data" t="Include">
+              <e p="NoiseData.cs" t="Include" />
+              <e p="TerrainData.cs" t="Include" />
+              <e p="TextureData.cs" t="Include" />
+              <e p="UpdatableData.cs" t="Include" />
+            </e>
+            <e p="UpdatableDataEditor.cs" t="Include" />
           </e>
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="TerrainShader.shader" t="Include" />
         </e>
       </e>
       <e p="DayAndNightReborn.sln" t="IncludeFlat" />
