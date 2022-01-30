@@ -31,7 +31,12 @@
           <e p="Camera" t="Include">
             <e p="CameraFollow.cs" t="Include" />
           </e>
-          <e p="PlayerTestController.cs" t="Include" />
+          <e p="Player" t="Include">
+            <e p="PlayerControls.cs" t="Include" />
+            <e p="PlayerInputManager.cs" t="Include" />
+            <e p="PlayerLook.cs" t="Include" />
+            <e p="PlayerMovement.cs" t="Include" />
+          </e>
           <e p="Procedural Generation" t="Include">
             <e p="FalloffGenerator.cs" t="Include" />
             <e p="HeightMapGenerator.cs" t="Include" />

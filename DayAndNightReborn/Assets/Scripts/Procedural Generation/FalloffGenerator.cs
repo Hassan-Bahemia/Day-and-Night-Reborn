@@ -4,27 +4,30 @@ namespace Procedural_Generation
 {
     public static class FalloffGenerator
     {
-        public static float[,] GenerateFalloffMap(int size) {
-            float[,] map = new float[size,size];
-
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j < size; j++) {
-                    float x = i / (float)size * 2 - 1;
-                    float y = j / (float)size * 2 - 1;
-
-                    float value = Mathf.Max (Mathf.Abs (x), Mathf.Abs (y));
-                    map [i, j] = Evaluate(value);
+        // Token: 0x060007DF RID: 2015 RVA: 0x0002920C File Offset: 0x0002740C
+        public static float[,] GenerateFalloffMap(int size)
+        {
+            float[,] array = new float[size, size];
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    float f = (float)i / (float)size * 2f - 1f;
+                    float f2 = (float)j / (float)size * 2f - 1f;
+                    float value = Mathf.Max(Mathf.Abs(f), Mathf.Abs(f2));
+                    array[i, j] = FalloffGenerator.Evaluate(value);
                 }
             }
-
-            return map;
+            return array;
         }
 
-        static float Evaluate(float value) {
-            float a = 3;
-            float b = 2.2f;
-
-            return Mathf.Pow (value, a) / (Mathf.Pow (value, a) + Mathf.Pow (b - b * value, a));
+        // Token: 0x060007E0 RID: 2016 RVA: 0x00029280 File Offset: 0x00027480
+        private static float Evaluate(float value)
+        {
+            float p = 3f;
+            float num = 2.2f;
+            return Mathf.Pow(value, p) / (Mathf.Pow(value, p) + Mathf.Pow(num - num * value, p));
         }
     }
+
 }
