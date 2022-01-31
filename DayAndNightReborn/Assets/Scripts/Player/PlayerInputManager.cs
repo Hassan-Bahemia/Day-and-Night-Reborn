@@ -20,6 +20,10 @@ namespace Player
             m_playerLook = GetComponent<PlayerLook>();
             
             m_playerMovementActions.Jump.performed += ctx => m_playerMovement.Jump();
+            m_playerMovementActions.Sprint.performed += ctx => m_playerMovement.ProcessSprint();
+            m_playerMovementActions.FinishSprint.performed += ctx => m_playerMovement.FinishSprint();
+            m_playerMovementActions.Crouch.performed += ctx => m_playerMovement.ProcessCrouching();
+            m_playerMovementActions.FinishCrouch.performed += ctx => m_playerMovement.FinishCrouching();
         }
         
         void FixedUpdate()

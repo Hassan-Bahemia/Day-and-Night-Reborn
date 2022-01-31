@@ -5,9 +5,13 @@
     <e p="C:\Users\hbahe\.Rider2019.2\system\resharper-host\Local\Transient\ReSharperHost\v192\SolutionCaches\_DayAndNightReborn.1668917185.00" t="ExcludeRecursive" />
     <e p="C:\Users\hbahe\Documents\Repo\Day-and-Night-Reborn\DayAndNightReborn" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Editor" t="Include">
+          <e p="GrassPainterEditor.cs" t="Include" />
+        </e>
         <e p="SampleScenes" t="Include">
           <e p="Menu" t="Include">
             <e p="Scripts" t="Include">
@@ -31,11 +35,20 @@
           <e p="Camera" t="Include">
             <e p="CameraFollow.cs" t="Include" />
           </e>
+          <e p="Game" t="Include">
+            <e p="TimeController.cs" t="Include" />
+          </e>
+          <e p="Grass Shaders" t="Include">
+            <e p="GeometryGrassPainter.cs" t="Include" />
+            <e p="ShaderInteractor.cs" t="Include" />
+          </e>
           <e p="Player" t="Include">
+            <e p="CharacterStats.cs" t="Include" />
             <e p="PlayerControls.cs" t="Include" />
             <e p="PlayerInputManager.cs" t="Include" />
             <e p="PlayerLook.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="PlayerStats.cs" t="Include" />
           </e>
           <e p="Procedural Generation" t="Include">
             <e p="FalloffGenerator.cs" t="Include" />
@@ -59,6 +72,7 @@
           </e>
         </e>
         <e p="Shaders" t="Include">
+          <e p="GeometryGrassShader.shader" t="Include" />
           <e p="TerrainShader.shader" t="Include" />
         </e>
         <e p="Standard Assets" t="Include">
@@ -298,6 +312,38 @@
                 <e p="ReflectiveDiffuseSpecTransp.shader" t="Include" />
               </e>
             </e>
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+            <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+            <e p="TMP_Bitmap.shader" t="Include" />
+            <e p="TMP_SDF Overlay.shader" t="Include" />
+            <e p="TMP_SDF SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+            <e p="TMP_SDF-Mobile SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface.shader" t="Include" />
+            <e p="TMP_SDF.shader" t="Include" />
+            <e p="TMP_Sprite.shader" t="Include" />
+            <e p="TMPro.cginc" t="Include" />
+            <e p="TMPro_Mobile.cginc" t="Include" />
+            <e p="TMPro_Properties.cginc" t="Include" />
+            <e p="TMPro_Surface.cginc" t="Include" />
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+            <e p="EmojiOne.json" t="Include" />
           </e>
         </e>
       </e>
