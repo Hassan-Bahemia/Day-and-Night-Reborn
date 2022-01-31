@@ -19,6 +19,7 @@ public class TimeController : MonoBehaviour
     [SerializeField] private float m_sunsetHour;
     [SerializeField] private Light m_sunLight;
     [SerializeField] private Light m_moonLight;
+    [SerializeField] private Material m_proceduralSkybox;
     [SerializeField] private float m_maxSunLightIntensity;
     [SerializeField] private float m_maxMoonLightIntensity;
 
@@ -75,7 +76,7 @@ public class TimeController : MonoBehaviour
 
             sunLightRotation = Mathf.Lerp(180, 360, (float)percentage);
         }
-        
+
         m_sunLight.transform.rotation = Quaternion.AngleAxis(sunLightRotation, Vector3.right);
     }
 

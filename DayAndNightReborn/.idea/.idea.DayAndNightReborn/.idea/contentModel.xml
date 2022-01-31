@@ -39,7 +39,7 @@
             <e p="TimeController.cs" t="Include" />
           </e>
           <e p="Grass Shaders" t="Include">
-            <e p="GeometryGrassPainter.cs" t="Include" />
+            <e p="GrassPainter.cs" t="Include" />
             <e p="ShaderInteractor.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
