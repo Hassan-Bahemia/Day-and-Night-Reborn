@@ -12,25 +12,6 @@
         <e p="Editor" t="Include">
           <e p="GrassPainterEditor.cs" t="Include" />
         </e>
-        <e p="SampleScenes" t="Include">
-          <e p="Menu" t="Include">
-            <e p="Scripts" t="Include">
-              <e p="MenuSceneLoader.cs" t="Include" />
-              <e p="PauseMenu.cs" t="Include" />
-              <e p="SceneAndURLLoader.cs" t="Include" />
-            </e>
-          </e>
-          <e p="Scripts" t="Include">
-            <e p="CameraSwitch.cs" t="Include" />
-            <e p="LevelReset.cs" t="Include" />
-            <e p="ParticleSceneControls.cs" t="Include" />
-            <e p="PlaceTargetWithMouse.cs" t="Include" />
-            <e p="SlowMoButton.cs" t="Include" />
-          </e>
-          <e p="Shaders" t="Include">
-            <e p="Skybox-Procedural.shader" t="Include" />
-          </e>
-        </e>
         <e p="Scripts" t="Include">
           <e p="Camera" t="Include">
             <e p="CameraFollow.cs" t="Include" />
@@ -58,7 +39,9 @@
             <e p="MapPreviewEditor.cs" t="Include" />
             <e p="MapTextureGenerator.cs" t="Include" />
             <e p="MeshGenerator.cs" t="Include" />
+            <e p="MeshGenerator1.cs" t="Include" />
             <e p="NoiseMap.cs" t="Include" />
+            <e p="ObjectPlacer.cs" t="Include" />
             <e p="PG Data" t="Include">
               <e p="HeightMapSettings.cs" t="Include" />
               <e p="MeshSettings.cs" t="Include" />
