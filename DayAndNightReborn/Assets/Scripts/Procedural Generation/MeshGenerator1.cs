@@ -6,7 +6,7 @@ namespace Procedural_Generation
     public class MeshGenerator1 : MonoBehaviour
     {
         Mesh mesh;
-        private int MESH_SCALE = 100;
+        private int MESH_SCALE = 1000;
         private Vector3[] vertices;
         private int[] triangles;
     
@@ -33,12 +33,35 @@ namespace Procedural_Generation
 
         void Start()
         {
-            fallOffMap = FallOffMapGeneration();
             mesh = new Mesh();
             GetComponent<MeshFilter>().mesh = mesh;
+            fallOffMap = FallOffMapGeneration();
             CreateNewMap();
         }
+        
+        private float[,] FallOffMapGeneration()
+        {
+            float[,] map = new float[xSize+1, zSize+1];
 
+            for (int i = 0; i <= xSize; i++)
+            {
+                for (int j = 0; j <= zSize; j++)
+                {
+                    float x = i / (float)xSize * 2 - 1;
+                    float y = j / (float)zSize * 2 - 1;
+
+                    float value = Mathf.Max(Mathf.Abs(x), Mathf.Abs(y));
+                    map[i, j] = EvaluateFallOf(value, 3f, 2.2f);
+                }
+            }
+            return map;
+        }
+
+        private float EvaluateFallOf(float value, float a, float b)
+        {
+            return Mathf.Pow(value, a) / (Mathf.Pow(value, a) + Mathf.Pow(b - b * value, a));
+        }
+        
         public void CreateNewMap()
         {
             CreateMeshShape();
@@ -200,29 +223,6 @@ namespace Procedural_Generation
             gameObject.transform.localScale = new Vector3(MESH_SCALE, MESH_SCALE, MESH_SCALE);
 
             MapEmbellishments();
-        }
-        
-        private float[,] FallOffMapGeneration()
-        {
-            float[,] map = new float[xSize+1, zSize+1];
-
-            for (int i = 0; i <= xSize; i++)
-            {
-                for (int j = 0; j <= zSize; j++)
-                {
-                    float x = i / (float)xSize * 2 - 1;
-                    float y = j / (float)zSize * 2 - 1;
-
-                    float value = Mathf.Max(Mathf.Abs(x), Mathf.Abs(y));
-                    map[i, j] = EvaluateFallOf(value, 3f, 2.2f);
-                }
-            }
-            return map;
-        }
-
-        private float EvaluateFallOf(float value, float a, float b)
-        {
-            return Mathf.Pow(value, a) / (Mathf.Pow(value, a) + Mathf.Pow(b - b * value, a));
         }
     }
 }
