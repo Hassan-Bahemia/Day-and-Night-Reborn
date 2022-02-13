@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Procedural_Generation
 {
@@ -34,6 +35,7 @@ namespace Procedural_Generation
         void Start()
         {
             mesh = new Mesh();
+            mesh.indexFormat = IndexFormat.UInt32;
             GetComponent<MeshFilter>().mesh = mesh;
             fallOffMap = FallOffMapGeneration();
             CreateNewMap();
