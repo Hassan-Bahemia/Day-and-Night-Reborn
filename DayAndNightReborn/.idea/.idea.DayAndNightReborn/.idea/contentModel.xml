@@ -39,9 +39,12 @@
             <e p="MapPreviewEditor.cs" t="Include" />
             <e p="MapTextureGenerator.cs" t="Include" />
             <e p="MeshGenerator.cs" t="Include" />
-            <e p="MeshGenerator1.cs" t="Include" />
+            <e p="New Procedural Gen" t="Include">
+              <e p="MeshGenerator1.cs" t="Include" />
+              <e p="MeshGenerator2.cs" t="Include" />
+              <e p="ObjectPlacer.cs" t="Include" />
+            </e>
             <e p="NoiseMap.cs" t="Include" />
-            <e p="ObjectPlacer.cs" t="Include" />
             <e p="PG Data" t="Include">
               <e p="HeightMapSettings.cs" t="Include" />
               <e p="MeshSettings.cs" t="Include" />
