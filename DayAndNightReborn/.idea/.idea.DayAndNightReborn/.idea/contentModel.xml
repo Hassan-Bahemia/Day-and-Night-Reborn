@@ -13,6 +13,9 @@
           <e p="GrassPainterEditor.cs" t="Include" />
         </e>
         <e p="Scripts" t="Include">
+          <e p="AI" t="Include">
+            <e p="GenerateNavMesh.cs" t="Include" />
+          </e>
           <e p="Camera" t="Include">
             <e p="CameraFollow.cs" t="Include" />
           </e>
