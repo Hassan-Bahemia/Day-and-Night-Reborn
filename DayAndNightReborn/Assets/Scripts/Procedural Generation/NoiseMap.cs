@@ -49,8 +49,8 @@ namespace Procedural_Generation
 
 					for (int i = 0; i < settings.octaves; i++)
 					{
-						float sampleX = (x - halfWidth + octaveOffsets[i].x) / settings.scale * frequency;
-						float sampleY = (y - halfHeight + octaveOffsets[i].y) / settings.scale * frequency;
+						float sampleX = (x - halfWidth) / settings.scale * frequency + octaveOffsets[i].x * frequency;
+						float sampleY = (y - halfHeight) / settings.scale * frequency - octaveOffsets[i].y * frequency;
 
 						float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 - 1;
 						noiseHeight += perlinValue * amplitude;

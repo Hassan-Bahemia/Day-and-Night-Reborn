@@ -354,6 +354,8 @@
 "Assets/Scripts/Procedural Generation/PG Data/MeshSettings.cs"
 "Assets/Scripts/Procedural Generation/PG Data/TextureData.cs"
 "Assets/Scripts/Procedural Generation/PG Data/UpdatableData.cs"
+"Assets/Scripts/Procedural Generation/ProceduralObjectPlacement.cs"
+"Assets/Scripts/Procedural Generation/ProceduralObjectPlacementEditor.cs"
 "Assets/Scripts/Procedural Generation/TerrainChunk.cs"
 "Assets/Scripts/Procedural Generation/TerrainGenerator.cs"
 "Assets/Scripts/Procedural Generation/ThreadedDataRequester.cs"

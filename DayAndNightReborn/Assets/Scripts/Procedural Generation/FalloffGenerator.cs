@@ -4,7 +4,6 @@ namespace Procedural_Generation
 {
     public static class FalloffGenerator
     {
-        // Token: 0x060007DF RID: 2015 RVA: 0x0002920C File Offset: 0x0002740C
         public static float[,] GenerateFalloffMap(int size)
         {
             float[,] array = new float[size, size];
@@ -20,8 +19,7 @@ namespace Procedural_Generation
             }
             return array;
         }
-
-        // Token: 0x060007E0 RID: 2016 RVA: 0x00029280 File Offset: 0x00027480
+        
         private static float Evaluate(float value)
         {
             float p = 3f;
@@ -29,5 +27,4 @@ namespace Procedural_Generation
             return Mathf.Pow(value, p) / (Mathf.Pow(value, p) + Mathf.Pow(num - num * value, p));
         }
     }
-
 }
