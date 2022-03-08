@@ -329,11 +329,11 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/AI/GenerateNavMesh.cs"
-"Assets/Scripts/Camera/CameraFollow.cs"
+"Assets/Scripts/CameraSettings/CameraFollow.cs"
+"Assets/Scripts/CameraSettings/SpirteIconCreator.cs"
 "Assets/Scripts/Game/TimeController.cs"
 "Assets/Scripts/Grass Shaders/GrassPainter.cs"
 "Assets/Scripts/Grass Shaders/ShaderInteractor.cs"
-"Assets/Scripts/Player/CharacterStats.cs"
 "Assets/Scripts/Player/PlayerControls.cs"
 "Assets/Scripts/Player/PlayerInputManager.cs"
 "Assets/Scripts/Player/PlayerLook.cs"
@@ -358,6 +358,9 @@
 "Assets/Scripts/Procedural Generation/TerrainGenerator.cs"
 "Assets/Scripts/Procedural Generation/ThreadedDataRequester.cs"
 "Assets/Scripts/Procedural Generation/UpdatableDataEditor.cs"
+"Assets/Scripts/ScriptableItems/Consumables.cs"
+"Assets/Scripts/ScriptableItems/InventoryItemData.cs"
+"Assets/Scripts/ScriptableItems/Weapons.cs"
 -langversion:8.0
 
 /deterministic

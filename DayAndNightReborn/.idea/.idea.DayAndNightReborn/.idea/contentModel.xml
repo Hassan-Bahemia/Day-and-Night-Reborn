@@ -16,8 +16,9 @@
           <e p="AI" t="Include">
             <e p="GenerateNavMesh.cs" t="Include" />
           </e>
-          <e p="Camera" t="Include">
+          <e p="CameraSettings" t="Include">
             <e p="CameraFollow.cs" t="Include" />
+            <e p="SpirteIconCreator.cs" t="Include" />
           </e>
           <e p="Game" t="Include">
             <e p="TimeController.cs" t="Include" />
@@ -27,7 +28,6 @@
             <e p="ShaderInteractor.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
-            <e p="CharacterStats.cs" t="Include" />
             <e p="PlayerControls.cs" t="Include" />
             <e p="PlayerInputManager.cs" t="Include" />
             <e p="PlayerLook.cs" t="Include" />
@@ -58,6 +58,11 @@
             <e p="TerrainGenerator.cs" t="Include" />
             <e p="ThreadedDataRequester.cs" t="Include" />
             <e p="UpdatableDataEditor.cs" t="Include" />
+          </e>
+          <e p="ScriptableItems" t="Include">
+            <e p="Consumables.cs" t="Include" />
+            <e p="InventoryItemData.cs" t="Include" />
+            <e p="Weapons.cs" t="Include" />
           </e>
         </e>
         <e p="Shaders" t="Include">
