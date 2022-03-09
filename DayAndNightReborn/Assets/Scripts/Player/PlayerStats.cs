@@ -13,7 +13,8 @@ public class PlayerStats : MonoBehaviour
     [Header("Stamina")]
     public float m_stamina;
     public float m_maxStamina;
-    public float staminaTimer;
+    public float m_staminaCooldown;
+    public bool m_allowSprintOrJump;
     public TextMeshProUGUI m_staminaText;
     [Space]
     [Header("Hunger")]
@@ -34,18 +35,9 @@ public class PlayerStats : MonoBehaviour
         {
             m_hunger = 0;
         }
-
-        if (m_stamina <= m_maxStamina)
-        {
-            staminaTimer -= Time.deltaTime;
-            if (staminaTimer <= 0)
-            {
-                GiveStamina(1);
-            }
-        }
     }
 
-    public void TakeStamina(int amount)
+    public void TakeStamina(float amount)
     {
         m_stamina -= amount;
         m_staminaText.text = m_stamina.ToString("0") + " / 100";
@@ -56,4 +48,5 @@ public class PlayerStats : MonoBehaviour
         m_stamina += amount;
         m_staminaText.text = m_stamina.ToString("0") + " / 100";
     }
+    
 }
