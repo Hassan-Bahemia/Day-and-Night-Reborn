@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Private")]
+    [Header("Private")] 
     [SerializeField] private CharacterController m_playerController;
     [SerializeField] private PlayerStats m_playerStats;
     [SerializeField] private Vector3 m_playerVelocity;
     [SerializeField] private bool m_isGrounded;
     [SerializeField] private bool m_isSprinting;
     [SerializeField] private bool m_isCrouching;
+    [SerializeField] private bool m_isJumping;
+    RaycastHit hit;
 
     [Header("Public")] 
     public float m_speed;
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_crouchingMultiplier;
     public float m_crouchingHeight;
     public float m_standingHeight = 2f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,8 +36,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         m_isGrounded = m_playerController.isGrounded;
+        if (!m_isGrounded && !m_isJumping)
+        {
+            SlopeCheck();
+        }
     }
-    
+
     //Receive input from our Player Input Manager and apply it to the character controller.
     public void ProcessMovement(Vector2 input)
     {
@@ -44,8 +50,11 @@ public class PlayerMovement : MonoBehaviour
         moveDirection.z = input.y;
         m_playerController.Move(transform.TransformDirection(moveDirection) * m_speed * Time.deltaTime);
         m_playerVelocity.y += m_gravity * Time.deltaTime;
-        if (m_isGrounded && m_playerVelocity.y < 0)
+        if (m_isGrounded && m_playerVelocity.y <= 0) {
             m_playerVelocity.y = -2f;
+            m_isJumping = false;
+            m_isGrounded = true;
+        }
         m_playerController.Move(m_playerVelocity * Time.deltaTime);
         if (m_isSprinting && m_isGrounded) {
             m_playerController.Move(transform.TransformDirection(moveDirection) * m_speed * m_sprintMultiplier * Time.deltaTime);
@@ -58,12 +67,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (m_isGrounded)
+        if (m_isGrounded && !m_isJumping)
         {
-            m_playerVelocity.y = Mathf.Sqrt(m_jumpHeight * -3.0f * m_gravity); 
+            m_isJumping = true;
+            m_isGrounded = false;
+            m_playerVelocity.y = Mathf.Sqrt(m_jumpHeight * -3.0f * m_gravity);
             m_playerStats.TakeStamina(10);
         }
-
     }
 
     public void ProcessSprint()
@@ -92,5 +102,10 @@ public class PlayerMovement : MonoBehaviour
         m_playerController.height = m_standingHeight;
         m_playerController.center = new Vector3(0, 0, 0);
         m_speed = m_normalSpeed;
+    }
+
+    private void SlopeCheck()
+    {
+        m_playerController.Move(-transform.up);
     }
 }
