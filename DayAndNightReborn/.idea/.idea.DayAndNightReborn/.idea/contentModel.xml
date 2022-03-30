@@ -12,13 +12,32 @@
         <e p="Editor" t="Include">
           <e p="GrassPainterEditor.cs" t="Include" />
         </e>
+        <e p="Low Poly Animated Animals" t="Include">
+          <e p="- Scripts" t="Include">
+            <e p="AnimationControl.cs" t="Include" />
+            <e p="DeathButtonControl.cs" t="Include" />
+            <e p="KillSwitch.cs" t="Include" />
+            <e p="PanelControll.cs" t="Include" />
+            <e p="PeriodicShake.cs" t="Include" />
+          </e>
+        </e>
+        <e p="PolygonNature" t="Include">
+          <e p="Shaders" t="Include">
+            <e p="SyntyStudios_LOD.shader" t="Include" />
+            <e p="SyntyStudios_Moss.shader" t="Include" />
+            <e p="SyntyStudios_SkyGradient.shader" t="Include" />
+            <e p="SyntyStudios_Trees.shader" t="Include" />
+            <e p="SyntyStudios_Vines.shader" t="Include" />
+            <e p="SyntyStudios_Water.shader" t="Include" />
+            <e p="VS_indirect.cginc" t="Include" />
+          </e>
+        </e>
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
             <e p="GenerateNavMesh.cs" t="Include" />
           </e>
           <e p="CameraSettings" t="Include">
             <e p="CameraFollow.cs" t="Include" />
-            <e p="SpirteIconCreator.cs" t="Include" />
           </e>
           <e p="Game" t="Include">
             <e p="TimeController.cs" t="Include" />
@@ -58,11 +77,6 @@
             <e p="TerrainGenerator.cs" t="Include" />
             <e p="ThreadedDataRequester.cs" t="Include" />
             <e p="UpdatableDataEditor.cs" t="Include" />
-          </e>
-          <e p="ScriptableItems" t="Include">
-            <e p="Consumables.cs" t="Include" />
-            <e p="InventoryItemData.cs" t="Include" />
-            <e p="Weapons.cs" t="Include" />
           </e>
         </e>
         <e p="Shaders" t="Include">
