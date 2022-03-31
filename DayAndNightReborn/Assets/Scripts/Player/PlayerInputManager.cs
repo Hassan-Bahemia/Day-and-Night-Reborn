@@ -10,7 +10,6 @@ namespace Player
         [SerializeField] private Vector2 m_movementInput;
         [SerializeField] private PlayerMovement m_playerMovement;
         [SerializeField] private PlayerLook m_playerLook;
-        [SerializeField] private PlayerActions m_playerActions;
         
         private void Awake()
         {
@@ -19,14 +18,12 @@ namespace Player
             
             m_playerMovement = GetComponent<PlayerMovement>();
             m_playerLook = GetComponent<PlayerLook>();
-            m_playerActions = GetComponentInChildren<PlayerActions>();
             
             m_playerMovementActions.Jump.performed += ctx => m_playerMovement.Jump();
             m_playerMovementActions.Sprint.performed += ctx => m_playerMovement.ProcessSprint();
             m_playerMovementActions.FinishSprint.performed += ctx => m_playerMovement.FinishSprint();
             m_playerMovementActions.Crouch.performed += ctx => m_playerMovement.ProcessCrouching();
             m_playerMovementActions.FinishCrouch.performed += ctx => m_playerMovement.FinishCrouching();
-            m_playerMovementActions.Action_1.performed += ctx => m_playerActions.StartCoroutine("SwingTool");
         }
         
         void FixedUpdate()

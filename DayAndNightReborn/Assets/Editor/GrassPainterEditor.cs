@@ -69,7 +69,7 @@ public class GrassPainterEditor : Editor
         grassPainter.toolbarInt = GUILayout.Toolbar(grassPainter.toolbarInt, toolbarStrings);
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
-        grassPainter.brushSize = EditorGUILayout.Slider("Brush Size", grassPainter.brushSize, 0.1f, 250f);
+        grassPainter.brushSize = EditorGUILayout.Slider("Brush Size", grassPainter.brushSize, 0.1f, 10f);
 
         if (grassPainter.toolbarInt == 0)
         {

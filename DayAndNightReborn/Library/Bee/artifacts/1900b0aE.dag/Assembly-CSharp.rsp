@@ -341,7 +341,6 @@
 "Assets/Scripts/Game/TimeController.cs"
 "Assets/Scripts/Grass Shaders/GrassPainter.cs"
 "Assets/Scripts/Grass Shaders/ShaderInteractor.cs"
-"Assets/Scripts/Player/PlayerActions.cs"
 "Assets/Scripts/Player/PlayerControls.cs"
 "Assets/Scripts/Player/PlayerInputManager.cs"
 "Assets/Scripts/Player/PlayerLook.cs"
