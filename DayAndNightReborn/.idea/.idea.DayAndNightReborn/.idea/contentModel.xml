@@ -47,6 +47,7 @@
             <e p="ShaderInteractor.cs" t="Include" />
           </e>
           <e p="Player" t="Include">
+            <e p="PlayerActions.cs" t="Include" />
             <e p="PlayerControls.cs" t="Include" />
             <e p="PlayerInputManager.cs" t="Include" />
             <e p="PlayerLook.cs" t="Include" />
@@ -78,10 +79,10 @@
             <e p="ThreadedDataRequester.cs" t="Include" />
             <e p="UpdatableDataEditor.cs" t="Include" />
           </e>
-        </e>
-        <e p="Shaders" t="Include">
-          <e p="GeometryGrassShader.shader" t="Include" />
-          <e p="TerrainShader.shader" t="Include" />
+          <e p="Shaders" t="Include">
+            <e p="GeometryGrassShader.shader" t="Include" />
+            <e p="TerrainShader.shader" t="Include" />
+          </e>
         </e>
         <e p="Standard Assets" t="Include">
           <e p="2D" t="Include">
@@ -352,6 +353,11 @@
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
             <e p="EmojiOne.json" t="Include" />
+          </e>
+        </e>
+        <e p="UFPS_Weapons" t="Include">
+          <e p="Textures" t="Include">
+            <e p="ReflectiveTransparent.shader" t="Include" />
           </e>
         </e>
       </e>
