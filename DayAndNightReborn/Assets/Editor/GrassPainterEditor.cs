@@ -69,7 +69,7 @@ public class GrassPainterEditor : Editor
         grassPainter.toolbarInt = GUILayout.Toolbar(grassPainter.toolbarInt, toolbarStrings);
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Brush Settings", EditorStyles.boldLabel);
-        grassPainter.brushSize = EditorGUILayout.Slider("Brush Size", grassPainter.brushSize, 0.1f, 10f);
+        grassPainter.brushSize = EditorGUILayout.Slider("Brush Size", grassPainter.brushSize, 0.1f, 100f);
 
         if (grassPainter.toolbarInt == 0)
         {
@@ -102,7 +102,7 @@ public class GrassPainterEditor : Editor
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Width and Length ", EditorStyles.boldLabel);
             grassPainter.sizeWidth = EditorGUILayout.Slider("Grass Width", grassPainter.sizeWidth, 0f, 2f);
-            grassPainter.sizeLength = EditorGUILayout.Slider("Grass Length", grassPainter.sizeLength, 0f, 2f);
+            grassPainter.sizeLength = EditorGUILayout.Slider("Grass Length", grassPainter.sizeLength, 0f, 15f);
             EditorGUILayout.Space();
             EditorGUILayout.LabelField("Color", EditorStyles.boldLabel);
             grassPainter.AdjustedColor = EditorGUILayout.ColorField("Brush Color", grassPainter.AdjustedColor);

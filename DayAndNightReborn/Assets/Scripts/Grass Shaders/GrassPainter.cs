@@ -12,7 +12,7 @@ public class GrassPainter : MonoBehaviour
 
     public Mesh mesh;
     MeshFilter filter;
-    public int grassLimit = 50000;
+    public int grassLimit = 200000000;
 
     // options
     public int toolbarInt = 0;
