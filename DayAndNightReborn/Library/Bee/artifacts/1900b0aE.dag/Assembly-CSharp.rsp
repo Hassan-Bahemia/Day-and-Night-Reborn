@@ -338,6 +338,7 @@
 "Assets/Low Poly Animated Animals/- Scripts/PeriodicShake.cs"
 "Assets/Scripts/AI/GenerateNavMesh.cs"
 "Assets/Scripts/CameraSettings/CameraFollow.cs"
+"Assets/Scripts/Game/GameObjectiveManager.cs"
 "Assets/Scripts/Game/TimeController.cs"
 "Assets/Scripts/Grass Shaders/GrassPainter.cs"
 "Assets/Scripts/Grass Shaders/ShaderInteractor.cs"

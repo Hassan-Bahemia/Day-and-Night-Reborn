@@ -13,13 +13,12 @@ public class TimeController : MonoBehaviour
     [SerializeField] private DateTime m_currentTime;
     [SerializeField] private TimeSpan m_sunriseTime;
     [SerializeField] private TimeSpan m_sunsetTime;
-    
+
     [Header("Sun Settings")]
     [SerializeField] private float m_sunriseHour;
     [SerializeField] private float m_sunsetHour;
     [SerializeField] private Light m_sunLight;
     [SerializeField] private Light m_moonLight;
-    [SerializeField] private Material m_proceduralSkybox;
     [SerializeField] private float m_maxSunLightIntensity;
     [SerializeField] private float m_maxMoonLightIntensity;
 
@@ -43,6 +42,8 @@ public class TimeController : MonoBehaviour
         UpdateTimeOfDay();
         RotateSun();
         UpdateLightSettings();
+        
+        print(m_currentTime);
     }
 
     private void UpdateTimeOfDay()
@@ -50,7 +51,7 @@ public class TimeController : MonoBehaviour
         m_currentTime = m_currentTime.AddSeconds(Time.deltaTime * m_timeMultiplier);
 
         if (m_timerText != null) {
-            m_timerText.text = m_currentTime.ToString("HH:mm");
+            m_timerText.text = "Day: " + m_currentTime.ToString("HH:mm");
         }
     }
 

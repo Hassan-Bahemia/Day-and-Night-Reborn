@@ -27,6 +27,7 @@ namespace Player
             m_playerMovementActions.Crouch.performed += ctx => m_playerMovement.ProcessCrouching();
             m_playerMovementActions.FinishCrouch.performed += ctx => m_playerMovement.FinishCrouching();
             m_playerMovementActions.Action_1.performed += ctx => m_playerActions.SwingTool();
+            m_playerMovementActions.ViewObjectives.performed += ctx => m_playerActions.ShowObjectives();
         }
         
         void FixedUpdate()

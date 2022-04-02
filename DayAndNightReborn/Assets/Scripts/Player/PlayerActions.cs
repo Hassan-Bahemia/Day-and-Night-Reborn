@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerActions : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class PlayerActions : MonoBehaviour
     public Animator m_axeSwing;
     public Animator m_pickAxeSwing;
     public Animator m_swordSwing;
+    public Animator m_objectiveAnim;
     
     [Header("Private")] 
     [SerializeField] private Transform[] m_tools;
@@ -16,7 +18,9 @@ public class PlayerActions : MonoBehaviour
     [SerializeField] private int m_selectedWeapon;
     [SerializeField] private float m_timeSinceLastSwitch;
     [SerializeField] private float m_timeSinceSwung;
-    
+    [SerializeField] private Image[] m_toolUI;
+    [SerializeField] private bool m_isPanelActive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +29,7 @@ public class PlayerActions : MonoBehaviour
 
         m_timeSinceLastSwitch = 0f;
         m_timeSinceSwung = 3f;
+        m_isPanelActive = false;
     }
 
     // Update is called once per frame
@@ -39,6 +44,25 @@ public class PlayerActions : MonoBehaviour
         }
         
         if(previousSelectedWeapon != m_selectedWeapon) Select(m_selectedWeapon);
+
+        if (m_selectedWeapon == 0)
+        {
+            m_toolUI[0].enabled = true;
+            m_toolUI[1].enabled = false;
+            m_toolUI[2].enabled = false;
+        }
+        else if (m_selectedWeapon == 1)
+        {
+            m_toolUI[0].enabled = false;
+            m_toolUI[1].enabled = true;
+            m_toolUI[2].enabled = false;
+        }
+        else if (m_selectedWeapon == 2)
+        {
+            m_toolUI[0].enabled = false;
+            m_toolUI[1].enabled = false;
+            m_toolUI[2].enabled = true;
+        }
 
         m_timeSinceLastSwitch += Time.deltaTime;
         m_timeSinceSwung += Time.deltaTime;
@@ -98,4 +122,22 @@ public class PlayerActions : MonoBehaviour
     {
         print("Selected new tool");
     }
+
+    public void ShowObjectives()
+    {
+        if (!m_isPanelActive && m_objectiveAnim.GetCurrentAnimatorStateInfo(0).IsName("ObjectiveHide"))
+        {
+            m_isPanelActive = true;
+            m_objectiveAnim.SetBool("Show", true);
+            m_objectiveAnim.SetBool("Hide", false);
+        }
+
+        if (m_isPanelActive && m_objectiveAnim.GetCurrentAnimatorStateInfo(0).IsName("ObjectiveShow"))
+        {
+            m_isPanelActive = false;
+            m_objectiveAnim.SetBool("Show", false);
+            m_objectiveAnim.SetBool("Hide", true);
+        }
+    }
+    
 }

@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool m_isSprinting;
     [SerializeField] private bool m_isCrouching;
     [SerializeField] private bool m_isJumping;
-    RaycastHit hit;
 
     [Header("Public")] 
     public float m_speed;
@@ -56,9 +55,11 @@ public class PlayerMovement : MonoBehaviour
             m_isGrounded = true;
         }
         m_playerController.Move(m_playerVelocity * Time.deltaTime);
-        if (m_isSprinting && m_isGrounded) {
+        if (m_isSprinting && m_isGrounded && m_playerStats.m_stamina <= 100) {
             m_playerController.Move(transform.TransformDirection(moveDirection) * m_speed * m_sprintMultiplier * Time.deltaTime);
-            m_playerStats.TakeStamina(1);
+            if (m_isSprinting) { 
+                m_playerStats.TakeStamina(1 * Time.deltaTime * 2f);
+            }
         }
         if (m_isCrouching && m_isGrounded) {
             m_playerController.Move(transform.TransformDirection(moveDirection) * m_speed * m_crouchingMultiplier * Time.deltaTime);
