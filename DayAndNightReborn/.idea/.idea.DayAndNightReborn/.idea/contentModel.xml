@@ -40,6 +40,7 @@
             <e p="CameraFollow.cs" t="Include" />
           </e>
           <e p="Game" t="Include">
+            <e p="Compass.cs" t="Include" />
             <e p="GameObjectiveManager.cs" t="Include" />
             <e p="TimeController.cs" t="Include" />
           </e>
@@ -51,6 +52,7 @@
             <e p="PlayerActions.cs" t="Include" />
             <e p="PlayerControls.cs" t="Include" />
             <e p="PlayerInputManager.cs" t="Include" />
+            <e p="PlayerInventory.cs" t="Include" />
             <e p="PlayerLook.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
             <e p="PlayerStats.cs" t="Include" />
