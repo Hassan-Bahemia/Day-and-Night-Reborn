@@ -83,14 +83,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press(pressPoint=0.01)""
                 },
                 {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""ecded630-253e-43c5-a58d-5ed5cbd1b344"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": ""Press(pressPoint=0.01)""
-                },
-                {
                     ""name"": ""ViewObjectives"",
                     ""type"": ""Button"",
                     ""id"": ""82bafdaa-49a9-499b-84ed-f3e7f5f6eeb3"",
@@ -234,17 +226,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""951691af-a1ea-42e5-8399-bdedbffc6494"",
-                    ""path"": ""<Keyboard>/f"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""2ea3fbfa-09a2-4b54-a2af-246ab959e259"",
                     ""path"": ""<Keyboard>/tab"",
                     ""interactions"": """",
@@ -269,7 +250,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_PlayerMovement_Crouch = m_PlayerMovement.FindAction("Crouch", throwIfNotFound: true);
         m_PlayerMovement_FinishCrouch = m_PlayerMovement.FindAction("FinishCrouch", throwIfNotFound: true);
         m_PlayerMovement_Action_1 = m_PlayerMovement.FindAction("Action_1", throwIfNotFound: true);
-        m_PlayerMovement_Interact = m_PlayerMovement.FindAction("Interact", throwIfNotFound: true);
         m_PlayerMovement_ViewObjectives = m_PlayerMovement.FindAction("ViewObjectives", throwIfNotFound: true);
     }
 
@@ -328,7 +308,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_PlayerMovement_Crouch;
     private readonly InputAction m_PlayerMovement_FinishCrouch;
     private readonly InputAction m_PlayerMovement_Action_1;
-    private readonly InputAction m_PlayerMovement_Interact;
     private readonly InputAction m_PlayerMovement_ViewObjectives;
     public struct PlayerMovementActions
     {
@@ -342,7 +321,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Crouch => m_Wrapper.m_PlayerMovement_Crouch;
         public InputAction @FinishCrouch => m_Wrapper.m_PlayerMovement_FinishCrouch;
         public InputAction @Action_1 => m_Wrapper.m_PlayerMovement_Action_1;
-        public InputAction @Interact => m_Wrapper.m_PlayerMovement_Interact;
         public InputAction @ViewObjectives => m_Wrapper.m_PlayerMovement_ViewObjectives;
         public InputActionMap Get() { return m_Wrapper.m_PlayerMovement; }
         public void Enable() { Get().Enable(); }
@@ -377,9 +355,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Action_1.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAction_1;
                 @Action_1.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAction_1;
                 @Action_1.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnAction_1;
-                @Interact.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInteract;
-                @Interact.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInteract;
-                @Interact.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnInteract;
                 @ViewObjectives.started -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnViewObjectives;
                 @ViewObjectives.performed -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnViewObjectives;
                 @ViewObjectives.canceled -= m_Wrapper.m_PlayerMovementActionsCallbackInterface.OnViewObjectives;
@@ -411,9 +386,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Action_1.started += instance.OnAction_1;
                 @Action_1.performed += instance.OnAction_1;
                 @Action_1.canceled += instance.OnAction_1;
-                @Interact.started += instance.OnInteract;
-                @Interact.performed += instance.OnInteract;
-                @Interact.canceled += instance.OnInteract;
                 @ViewObjectives.started += instance.OnViewObjectives;
                 @ViewObjectives.performed += instance.OnViewObjectives;
                 @ViewObjectives.canceled += instance.OnViewObjectives;
@@ -431,7 +403,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnCrouch(InputAction.CallbackContext context);
         void OnFinishCrouch(InputAction.CallbackContext context);
         void OnAction_1(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
         void OnViewObjectives(InputAction.CallbackContext context);
     }
 }

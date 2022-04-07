@@ -8,18 +8,8 @@ public class PlayerInventory : MonoBehaviour
     [Header("Public")] 
     public int m_woodHeld;
     public int m_rockHeld;
+    public int m_coinsHeld;
     public TextMeshProUGUI m_woodText;
     public TextMeshProUGUI m_rockText;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public TextMeshProUGUI m_coinText;
 }

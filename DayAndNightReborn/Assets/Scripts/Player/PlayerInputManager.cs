@@ -11,7 +11,7 @@ namespace Player
         [SerializeField] private PlayerMovement m_playerMovement;
         [SerializeField] private PlayerLook m_playerLook;
         [SerializeField] private PlayerActions m_playerActions;
-        
+
         private void Awake()
         {
             m_playerControls = new PlayerControls();

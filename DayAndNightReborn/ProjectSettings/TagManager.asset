@@ -7,6 +7,9 @@ TagManager:
   - Tree
   - Rock
   - Chest
+  - Axe
+  - Pickaxe
+  - Sword
   layers:
   - Default
   - TransparentFX

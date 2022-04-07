@@ -8,6 +8,7 @@ public class PlayerStats : MonoBehaviour
 {
     [Header("Health")]
     public float m_health;
+    public float m_maxHealth;
     public TextMeshProUGUI m_healthText;
     [Space]
     [Header("Stamina")]
@@ -19,8 +20,16 @@ public class PlayerStats : MonoBehaviour
     [Space]
     [Header("Hunger")]
     public float m_hunger;
+    public float m_maxHunger;
     public TextMeshProUGUI m_hungerText;
 
+
+    private void Start()
+    {
+        m_health = m_maxHealth;
+        m_stamina = m_maxStamina;
+        m_hunger = m_maxHunger;
+    }
 
     private void Update()
     {
@@ -35,6 +44,20 @@ public class PlayerStats : MonoBehaviour
         {
             m_hunger = 0;
         }
+
+        if (m_health > m_maxHealth)
+        {
+            m_health = m_maxHealth;
+        }        
+        if (m_stamina > m_maxStamina)
+        {
+            m_stamina = m_maxStamina;
+        }
+        if (m_hunger > m_maxHunger)
+        {
+            m_hunger = m_maxHunger;
+        }
+        
     }
 
     public void TakeStamina(float amount)
@@ -43,10 +66,16 @@ public class PlayerStats : MonoBehaviour
         m_staminaText.text = m_stamina.ToString("0") + " / 100";
     }
 
-    public void GiveStamina(int amount)
+    public void GiveStamina(float amount)
     {
         m_stamina += amount;
         m_staminaText.text = m_stamina.ToString("0") + " / 100";
+    }
+
+    public void TakeHealth(float amount)
+    {
+        m_health -= amount;
+        m_healthText.text = m_health.ToString("0") + " / 100";
     }
     
 }

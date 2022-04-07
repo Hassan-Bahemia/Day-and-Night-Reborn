@@ -11,6 +11,7 @@
       <e p="Assets" t="Include">
         <e p="Editor" t="Include">
           <e p="GrassPainterEditor.cs" t="Include" />
+          <e p="PlacementGeneratorEditor.cs" t="Include" />
         </e>
         <e p="Low Poly Animated Animals" t="Include">
           <e p="- Scripts" t="Include">
@@ -42,6 +43,8 @@
           <e p="Game" t="Include">
             <e p="Compass.cs" t="Include" />
             <e p="GameObjectiveManager.cs" t="Include" />
+            <e p="Mushroom.cs" t="Include" />
+            <e p="MushroomStats.cs" t="Include" />
             <e p="TimeController.cs" t="Include" />
           </e>
           <e p="Grass Shaders" t="Include">
@@ -77,6 +80,7 @@
               <e p="TextureData.cs" t="Include" />
               <e p="UpdatableData.cs" t="Include" />
             </e>
+            <e p="PlacementGenerator.cs" t="Include" />
             <e p="TerrainChunk.cs" t="Include" />
             <e p="TerrainGenerator.cs" t="Include" />
             <e p="ThreadedDataRequester.cs" t="Include" />

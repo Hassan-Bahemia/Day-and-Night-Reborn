@@ -39,6 +39,26 @@ public class PlayerMovement : MonoBehaviour
         {
             SlopeCheck();
         }
+
+        if (!m_isJumping || !m_isSprinting)
+        {
+            if (m_playerStats.m_stamina < 100)
+            {
+                m_playerStats.m_staminaCooldown -= Time.deltaTime;
+                if (m_playerStats.m_staminaCooldown <= 0)
+                {
+                    m_playerStats.GiveStamina(5 * Time.deltaTime * 2f);
+                    if (m_playerStats.m_stamina > 100)
+                    {
+                        m_playerStats.m_stamina = m_playerStats.m_maxStamina;
+                    }
+                }
+            }
+        }
+        if (m_playerStats.m_stamina >= 100)
+        {
+            m_playerStats.m_staminaCooldown = 15;
+        }
     }
 
     //Receive input from our Player Input Manager and apply it to the character controller.
@@ -55,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
             m_isGrounded = true;
         }
         m_playerController.Move(m_playerVelocity * Time.deltaTime);
-        if (m_isSprinting && m_isGrounded && m_playerStats.m_stamina <= 100) {
+        if (m_isSprinting && m_isGrounded && m_playerStats.m_stamina > 0) {
             m_playerController.Move(transform.TransformDirection(moveDirection) * m_speed * m_sprintMultiplier * Time.deltaTime);
             if (m_isSprinting) { 
                 m_playerStats.TakeStamina(1 * Time.deltaTime * 2f);
@@ -68,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (m_isGrounded && !m_isJumping)
+        if (m_isGrounded && !m_isJumping && m_playerStats.m_stamina > 0)
         {
             m_isJumping = true;
             m_isGrounded = false;
