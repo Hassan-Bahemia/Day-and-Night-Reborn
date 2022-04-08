@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -9,8 +11,8 @@ public class GameObjectiveManager : MonoBehaviour
     [Header("Private")]
     [SerializeField] private int m_maxWoodsNeeded;
     [SerializeField] private int m_maxStonesNeeded;
-    [SerializeField] private bool m_isFinalBossKilled;
-    [SerializeField] private bool m_canBoatBeCrafted;
+    public bool m_isFinalBossKilled;
+    [SerializeField] private bool m_hasBoatBeenCrafted;
     [SerializeField] private bool m_canPlayerFinish;
     [SerializeField] private bool m_isObjectiveOneComplete;
     [SerializeField] private bool m_isObjectiveTwoComplete;
@@ -21,72 +23,103 @@ public class GameObjectiveManager : MonoBehaviour
     [Header("Boat Settings")]
     [SerializeField] private GameObject m_boat;
     [SerializeField] private Transform[] m_boatSpawns;
+    [SerializeField] private TextMeshProUGUI m_boatText;
+
+    [Header("Boss")] 
+    [SerializeField] private GameObject m_boss;
+    [SerializeField] private Transform m_playerTransform;
+    [SerializeField] private TextMeshProUGUI m_bossText;
 
     // Start is called before the first frame update
     void Start()
     {
         m_playerInventory = GameObject.Find("Player").GetComponent<PlayerInventory>();
-        m_isObjectiveOneComplete = false;
-        m_isObjectiveTwoComplete = false;
-        m_isObjectiveThreeComplete = false;
-        m_isObjectiveFourComplete = false;
-        m_canPlayerFinish = false;
-        m_canBoatBeCrafted = false;
-        m_boat = Instantiate(m_boat, m_boatSpawns[Random.Range(0, m_boatSpawns.Length)].position, Quaternion.identity);
-        m_boat.transform.localScale = new Vector3(15, 15, 15);
+        m_playerInventory.m_woodText.color = Color.red;
+        m_playerInventory.m_rockText.color = Color.red;
+        m_bossText.color = Color.red;
+        m_boatText.color = Color.red;
     }
 
     // Update is called once per frame
     void Update()
     {
+        FinishGame();
         CheckIfObjectiveOneComplete();
         CheckIfObjectiveTwoComplete();
-        BoatCanBeBuilt();
-        SpawnFinalBoss();
-        FinishGame();
+        BuildBoat();
+
+        if (m_isObjectiveThreeComplete)
+        {
+            SpawnBoss();
+            m_isObjectiveThreeComplete = false;
+        }
+
+        m_playerInventory.m_woodText.text = $"Wood Collected: {m_playerInventory.m_woodHeld} / {m_maxWoodsNeeded}";
+        m_playerInventory.m_rockText.text = $"Rock Collected: {m_playerInventory.m_rockHeld} / {m_maxStonesNeeded}";
     }
 
     void CheckIfObjectiveOneComplete()
     {
+        if (m_hasBoatBeenCrafted)
+            return;
+        
         if (m_playerInventory.m_woodHeld >= m_maxWoodsNeeded)
         {
             m_isObjectiveOneComplete = true;
+            m_playerInventory.m_woodText.color = Color.green;
         }
     }
     
     void CheckIfObjectiveTwoComplete()
     {
+        if (m_hasBoatBeenCrafted)
+            return;
+        
         if (m_playerInventory.m_rockHeld >= m_maxStonesNeeded)
         {
             m_isObjectiveTwoComplete = true;
+            m_playerInventory.m_rockText.color = Color.green;
         }
     }
 
-    void BoatCanBeBuilt()
+    void BuildBoat()
     {
-        if (m_isObjectiveOneComplete && m_isObjectiveTwoComplete)
+        if (!m_isObjectiveOneComplete || !m_isObjectiveTwoComplete)
+            return;
+        print("building boat");
+        m_isObjectiveOneComplete = false;
+        m_isObjectiveTwoComplete = false;
+        m_hasBoatBeenCrafted = true;
+        m_boat = Instantiate(m_boat, m_boatSpawns[Random.Range(0, m_boatSpawns.Length)].position, Quaternion.identity);
+        m_boat.transform.localScale = new Vector3(15, 15, 15);
+        m_isObjectiveThreeComplete = true;
+        m_boatText.color = Color.green;
+    }
+
+    void CanSpawnFinalBoss()
+    {
+        if (m_isObjectiveThreeComplete)
         {
-            m_canBoatBeCrafted = true;
-            if (m_canBoatBeCrafted)
+            RaycastHit hit;
+
+            if (Physics.Raycast(new Vector3(m_playerTransform.position.x + Random.Range(-60, 150), m_playerTransform.position.y + 100, m_playerTransform.position.z + Random.Range(-60, 150)), Vector3.down, out hit, Mathf.Infinity))
             {
-                m_isObjectiveThreeComplete = true;
+                GameObject clone = Instantiate(m_boss, hit.point + new Vector3(0, 5, 0), Quaternion.identity);
             }
         }
     }
 
-    void SpawnFinalBoss()
+    void SpawnBoss()
     {
-        if (m_isObjectiveThreeComplete)
-        {
-             
-        }
+        CanSpawnFinalBoss();
     }
 
     void FinishGame()
     {
         if (m_isObjectiveOneComplete && m_isObjectiveTwoComplete && m_isObjectiveThreeComplete && m_isObjectiveFourComplete && m_isFinalBossKilled)
         {
-            
+            m_canPlayerFinish = true;
+            m_bossText.color = Color.green;
         }
     }
 }

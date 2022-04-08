@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,8 +9,12 @@ public class PlayerInventory : MonoBehaviour
     [Header("Public")] 
     public int m_woodHeld;
     public int m_rockHeld;
-    public int m_coinsHeld;
     public TextMeshProUGUI m_woodText;
     public TextMeshProUGUI m_rockText;
-    public TextMeshProUGUI m_coinText;
+
+    private void Start()
+    {
+        m_woodHeld = 0;
+        m_rockHeld = 0;
+    }
 }

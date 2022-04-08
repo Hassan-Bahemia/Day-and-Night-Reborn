@@ -36,6 +36,8 @@ public class PlayerStats : MonoBehaviour
         m_hunger -= Time.deltaTime;
         m_hungerText.text = m_hunger.ToString("0") + " / 100";
 
+        m_healthText.text = m_health.ToString("0") + " / 100";
+
         if (m_stamina <= 0)
         {
             m_stamina = 0;
@@ -43,6 +45,11 @@ public class PlayerStats : MonoBehaviour
         if (m_hunger <= 0)
         {
             m_hunger = 0;
+        }
+
+        if (m_health <= 0)
+        {
+            Die();
         }
 
         if (m_health > m_maxHealth)
@@ -77,5 +84,17 @@ public class PlayerStats : MonoBehaviour
         m_health -= amount;
         m_healthText.text = m_health.ToString("0") + " / 100";
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            TakeHealth(15);
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
 }

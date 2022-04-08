@@ -10,7 +10,7 @@ public class PlayerActions : MonoBehaviour
     public Animator m_pickAxeSwing;
     public Animator m_swordSwing;
     public Animator m_objectiveAnim;
-    public MeshCollider[] m_toolColliders;
+    public Collider[] m_toolColliders;
     
     [Header("Private")] 
     [SerializeField] private Transform[] m_tools;

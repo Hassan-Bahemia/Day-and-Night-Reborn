@@ -10,6 +10,7 @@ TagManager:
   - Axe
   - Pickaxe
   - Sword
+  - Boss
   layers:
   - Default
   - TransparentFX

@@ -35,6 +35,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
+            <e p="BossController.cs" t="Include" />
             <e p="GenerateNavMesh.cs" t="Include" />
           </e>
           <e p="CameraSettings" t="Include">
@@ -42,6 +43,7 @@
           </e>
           <e p="Game" t="Include">
             <e p="Compass.cs" t="Include" />
+            <e p="Enviornment.cs" t="Include" />
             <e p="GameObjectiveManager.cs" t="Include" />
             <e p="Mushroom.cs" t="Include" />
             <e p="MushroomStats.cs" t="Include" />

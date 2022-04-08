@@ -11,15 +11,15 @@ GameObject:
   - component: {fileID: 8601517810723940844}
   - component: {fileID: 6884198140606894246}
   - component: {fileID: 7974801391671866418}
-  - component: {fileID: 8064307233025015352}
   - component: {fileID: 8064307233025015351}
+  - component: {fileID: 631396730}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8601517810723940844
 Transform:
   m_ObjectHideFlags: 0
@@ -88,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8064307233025015352
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 713985047324752599}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: bdf70bc410d9505419361ecaf1d08225, type: 3}
 --- !u!95 &8064307233025015351
 Animator:
   serializedVersion: 3
@@ -121,3 +107,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &631396730
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713985047324752599}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0823799, y: 0.3925813, z: 0.03664506}
+  m_Center: {x: -0.006195646, y: 0.3794415, z: -0.0000000461936}

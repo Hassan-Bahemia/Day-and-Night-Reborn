@@ -42,8 +42,6 @@ public class TimeController : MonoBehaviour
         UpdateTimeOfDay();
         RotateSun();
         UpdateLightSettings();
-        
-        print(m_currentTime);
     }
 
     private void UpdateTimeOfDay()
