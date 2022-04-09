@@ -3,27 +3,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class BossController : MonoBehaviour
 {
     [Header("Private")]
     [SerializeField] private float attackRadius;
-    [SerializeField] private int m_bossHP;
+    [SerializeField] private float m_bossHP;
+    [SerializeField] private float m_bossMaxHP;
     [SerializeField] private Transform m_playerTarget;
     [SerializeField] private GameObjectiveManager m_GOM;
     [SerializeField] private NavMeshAgent m_bossAgent;
     [SerializeField] private Animator m_bossAnim;
+    [SerializeField] private Image m_healthUI;
 
     // Start is called before the first frame update
     void Start()
     {
         attackRadius = 25f;
-        m_bossHP = 200;
+        m_bossHP = m_bossMaxHP;
         m_playerTarget = GameObject.Find("Player").GetComponent<Transform>();
         m_GOM = GameObject.Find("GameManager").GetComponent<GameObjectiveManager>();
         m_bossAgent = GetComponent<NavMeshAgent>();
         m_bossAnim = GetComponent<Animator>();
+        m_healthUI = GameObject.Find("Boss_Health_Background_Green").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -45,22 +49,27 @@ public class BossController : MonoBehaviour
 
         if (distance < attackRadius)
         {
-            m_bossAnim.SetTrigger("isAttacking");
-            m_bossAnim.ResetTrigger("isChasing");
+            m_bossAnim.SetBool("isAttacking", true);
+            m_bossAnim.SetBool("isChasing", false);
         }
         else
         {
-            m_bossAnim.SetTrigger("isChasing");
-            m_bossAnim.ResetTrigger("isAttacking");
+            m_bossAnim.SetBool("isAttacking", false);
+            m_bossAnim.SetBool("isChasing", true);
         }
+        
+        m_healthUI.fillAmount = m_bossHP / m_bossMaxHP;
 
     }
 
     void Die()
     {
+        m_bossAgent.speed = 0;
         m_GOM.m_isFinalBossKilled = true;
         m_bossAnim.SetTrigger("Die");
-        Destroy(gameObject, 15f);
+        m_bossAnim.SetBool("isAttacking", false);
+        m_bossAnim.SetBool("isChasing", false);
+        Destroy(gameObject, 2.5f);
     }
 
     void FaceTarget()
@@ -70,7 +79,7 @@ public class BossController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime);
     }
 
-    void TakeDamage(int amount)
+    void TakeDamage(float amount)
     {
         m_bossHP -= amount;
     }
@@ -79,7 +88,7 @@ public class BossController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Sword") || other.gameObject.CompareTag("Axe") || other.gameObject.CompareTag("Pickaxe"))
         {
-            TakeDamage(Random.Range(10, 15));
+            TakeDamage(Random.Range(5.5f, 7.5f));
         }
     }
 }

@@ -1266,10 +1266,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackRadius: 50
   m_bossHP: 0
+  m_bossMaxHP: 200
   m_playerTarget: {fileID: 0}
   m_GOM: {fileID: 0}
   m_bossAgent: {fileID: 0}
   m_bossAnim: {fileID: 0}
+  m_healthUI: {fileID: 0}
 --- !u!54 &670267937081481846
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1297,8 +1299,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.25, z: 0.2}
-  m_Center: {x: 0.59, y: 1.35, z: 0}
+  m_Size: {x: 0.81600475, y: 0.5037753, z: 0.20000002}
+  m_Center: {x: 0.7480025, y: 1.3666008, z: 0}
 --- !u!1 &1613829283467716346
 GameObject:
   m_ObjectHideFlags: 0

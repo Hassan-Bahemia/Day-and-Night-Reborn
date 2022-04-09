@@ -17,7 +17,6 @@ public class GameObjectiveManager : MonoBehaviour
     [SerializeField] private bool m_isObjectiveOneComplete;
     [SerializeField] private bool m_isObjectiveTwoComplete;
     [SerializeField] private bool m_isObjectiveThreeComplete;
-    [SerializeField] private bool m_isObjectiveFourComplete;
     [SerializeField] private PlayerInventory m_playerInventory;
     
     [Header("Boat Settings")]
@@ -29,6 +28,7 @@ public class GameObjectiveManager : MonoBehaviour
     [SerializeField] private GameObject m_boss;
     [SerializeField] private Transform m_playerTransform;
     [SerializeField] private TextMeshProUGUI m_bossText;
+    [SerializeField] private Animator m_bossTextAnim;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +106,8 @@ public class GameObjectiveManager : MonoBehaviour
             {
                 GameObject clone = Instantiate(m_boss, hit.point + new Vector3(0, 5, 0), Quaternion.identity);
             }
+            m_bossTextAnim.SetBool("Show", true);
+            m_bossTextAnim.SetBool("Hide", false);
         }
     }
 
@@ -116,10 +118,12 @@ public class GameObjectiveManager : MonoBehaviour
 
     void FinishGame()
     {
-        if (m_isObjectiveOneComplete && m_isObjectiveTwoComplete && m_isObjectiveThreeComplete && m_isObjectiveFourComplete && m_isFinalBossKilled)
+        if (m_isFinalBossKilled)
         {
             m_canPlayerFinish = true;
             m_bossText.color = Color.green;
+            m_bossTextAnim.SetBool("Hide", true);
+            m_bossTextAnim.SetBool("Show", false);
         }
     }
 }

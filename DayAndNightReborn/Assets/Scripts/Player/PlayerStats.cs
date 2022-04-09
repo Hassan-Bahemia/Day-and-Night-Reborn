@@ -22,7 +22,8 @@ public class PlayerStats : MonoBehaviour
     public float m_hunger;
     public float m_maxHunger;
     public TextMeshProUGUI m_hungerText;
-
+    
+    [SerializeField] private bool m_dmgDealt;
 
     private void Start()
     {
@@ -89,7 +90,12 @@ public class PlayerStats : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Boss"))
         {
-            TakeHealth(15);
+            if (!m_dmgDealt)
+            {
+                m_dmgDealt = true;
+                TakeHealth(12);
+                m_dmgDealt = false;
+            }
         }
     }
 
