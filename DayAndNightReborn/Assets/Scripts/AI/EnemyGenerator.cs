@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyGenerator : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class EnemyGenerator : MonoBehaviour
     public int m_enemySpawned;
     public float m_timeToSpawn;
     public float m_defaultTimeToSpawn;
-    public List<GameObject> m_enemyList;
     public Transform m_playerTransform;
     [SerializeField] private GameObjectiveManager m_GOM;
 
@@ -27,44 +27,40 @@ public class EnemyGenerator : MonoBehaviour
     {
         m_timeToSpawn -= Time.deltaTime;
         
-        if (m_timeToSpawn <= 0 && m_enemySpawned == 0 && !m_GOM.m_isObjectiveThreeComplete)
+        if (m_timeToSpawn <= 0 && m_enemySpawned == 0 && !m_GOM.m_isObjectiveThreeComplete && !m_GOM.m_bossIsSpawned)
         {
             for (int i = 0; i < m_density; i++)
             {
-                SpawnPrefab();
-                m_enemySpawned++;
+                SpawnPrefab(m_enemyPrefab);
+                m_enemySpawned = 1;
             }
             m_timeToSpawn = m_defaultTimeToSpawn;
         }
         else
         {
-            m_enemyList.Clear();
+            return;
         }
 
-        if (m_timeToSpawn <= 0 && m_enemySpawned == 0 && m_GOM.m_isFinalBossKilled)
+        if (m_timeToSpawn <= 0 && m_enemySpawned == 0 && m_GOM.m_isFinalBossKilled && !m_GOM.m_bossIsSpawned)
         {
             for (int i = 0; i < m_density; i++)
             {
-                SpawnPrefab();
+                SpawnPrefab(m_enemyPrefab);
                 m_enemySpawned++;
             }
             m_timeToSpawn = m_defaultTimeToSpawn;
-        }
-        else
-        {
-            m_enemyList.Clear();
         }
     }
 
-    public void SpawnPrefab()
+    public void SpawnPrefab(GameObject clone)
     {
         RaycastHit hit;
 
         if (Physics.Raycast(new Vector3(m_playerTransform.position.x + Random.Range(-60, 150), m_playerTransform.position.y + 100, m_playerTransform.position.z + Random.Range(-60, 150)), Vector3.down, out hit, Mathf.Infinity))
         {
-            GameObject clone = Instantiate(m_enemyPrefab, hit.point, Quaternion.identity);
+            m_enemyPrefab = clone;
+            clone = Instantiate(clone, hit.point, Quaternion.identity);
             clone.transform.parent = transform;
-            m_enemyList.Add(clone);
         }
     }
 }

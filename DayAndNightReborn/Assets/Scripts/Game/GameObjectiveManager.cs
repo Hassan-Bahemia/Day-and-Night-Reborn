@@ -32,6 +32,7 @@ public class GameObjectiveManager : MonoBehaviour
     [SerializeField] private Transform m_playerTransform;
     [SerializeField] private TextMeshProUGUI m_bossText;
     [SerializeField] private Animator m_bossTextAnim;
+    public bool m_bossIsSpawned;
 
     // Start is called before the first frame update
     void Start()
@@ -109,7 +110,7 @@ public class GameObjectiveManager : MonoBehaviour
 
             if (Physics.Raycast(new Vector3(m_playerTransform.position.x + Random.Range(-60, 150), m_playerTransform.position.y + 100, m_playerTransform.position.z + Random.Range(-60, 150)), Vector3.down, out hit, Mathf.Infinity))
             {
-                GameObject clone = Instantiate(m_boss, hit.point + new Vector3(0, 35, 0), Quaternion.identity);
+                GameObject clone = Instantiate(m_boss, hit.point, Quaternion.identity);
             }
             m_bossTextAnim.SetBool("Show", true);
             m_bossTextAnim.SetBool("Hide", false);
@@ -120,6 +121,7 @@ public class GameObjectiveManager : MonoBehaviour
     {
         print("hello");
         CanSpawnFinalBoss();
+        m_bossIsSpawned = true;
     }
 
     void FinishGame()

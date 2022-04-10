@@ -363,7 +363,6 @@
 "Assets/Scripts/Procedural Generation/HeightMapGenerator.cs"
 "Assets/Scripts/Procedural Generation/HideOnPlay.cs"
 "Assets/Scripts/Procedural Generation/MapPreview.cs"
-"Assets/Scripts/Procedural Generation/MapPreviewEditor.cs"
 "Assets/Scripts/Procedural Generation/MapTextureGenerator.cs"
 "Assets/Scripts/Procedural Generation/MeshGenerator.cs"
 "Assets/Scripts/Procedural Generation/New Procedural Gen/MeshGenerator1.cs"
@@ -378,7 +377,6 @@
 "Assets/Scripts/Procedural Generation/TerrainChunk.cs"
 "Assets/Scripts/Procedural Generation/TerrainGenerator.cs"
 "Assets/Scripts/Procedural Generation/ThreadedDataRequester.cs"
-"Assets/Scripts/Procedural Generation/UpdatableDataEditor.cs"
 -langversion:8.0
 
 /deterministic

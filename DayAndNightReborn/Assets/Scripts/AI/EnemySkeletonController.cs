@@ -24,7 +24,6 @@ public class EnemySkeletonController : MonoBehaviour
         m_playerTarget = GameObject.Find("Player").GetComponent<Transform>();
         m_enemyAgent = GetComponent<NavMeshAgent>();
         m_enemyAnim = GetComponent<Animator>();
-        m_healthUI = GameObject.Find("Green_Background_Skeleton").GetComponent<Image>();
         m_EG = GameObject.Find("Skeleton_Gen").GetComponent<EnemyGenerator>();
         m_enemyAgent.SetDestination(m_playerTarget.position);
     }
@@ -67,8 +66,7 @@ public class EnemySkeletonController : MonoBehaviour
         m_enemyAnim.SetBool("isAttacking", false);
         m_enemyAnim.SetBool("isChasing", false);
         Destroy(gameObject, 3.2f);
-        m_EG.m_enemyList.Remove(gameObject);
-        m_EG.m_enemySpawned--;
+        m_EG.m_enemySpawned = 0;
     }
     
     void FaceTarget()

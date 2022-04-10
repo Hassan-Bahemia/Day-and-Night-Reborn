@@ -1339,7 +1339,7 @@ MonoBehaviour:
   m_playerTarget: {fileID: 0}
   m_enemyAgent: {fileID: 0}
   m_enemyAnim: {fileID: 0}
-  m_healthUI: {fileID: 0}
+  m_healthUI: {fileID: 936639238286791896}
   m_EG: {fileID: 0}
 --- !u!1 &8931587559710264101
 GameObject:

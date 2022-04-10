@@ -372,7 +372,7 @@ MonoBehaviour:
   m_enemyMaxHP: 100
   m_playerTarget: {fileID: 0}
   m_enemyAnim: {fileID: 0}
-  m_healthUI: {fileID: 0}
+  m_healthUI: {fileID: 60624525579483116}
   m_EG: {fileID: 0}
 --- !u!1 &2138162878403734764
 GameObject:

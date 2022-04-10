@@ -61,6 +61,7 @@ public class BossController : MonoBehaviour
 
     void Die()
     {
+        m_GOM.m_bossIsSpawned = false;
         m_bossAgent.speed = 0;
         m_GOM.m_isFinalBossKilled = true;
         m_bossAnim.SetTrigger("Die");
