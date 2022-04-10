@@ -17,6 +17,9 @@ public class BossController : MonoBehaviour
     [SerializeField] private NavMeshAgent m_bossAgent;
     [SerializeField] private Animator m_bossAnim;
     [SerializeField] private Image m_healthUI;
+    
+    [SerializeField] private float m_invincibilityFrames;
+    [SerializeField] private float m_lastTimeHit;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,7 @@ public class BossController : MonoBehaviour
         
         m_healthUI.fillAmount = m_bossHP / m_bossMaxHP;
 
+        m_lastTimeHit += Time.deltaTime;
     }
 
     void Die()
@@ -79,6 +83,10 @@ public class BossController : MonoBehaviour
 
     void TakeDamage(float amount)
     {
+        if (m_lastTimeHit < m_invincibilityFrames) {
+            return;
+        }
+        m_lastTimeHit = 0;
         m_bossHP -= amount;
     }
 

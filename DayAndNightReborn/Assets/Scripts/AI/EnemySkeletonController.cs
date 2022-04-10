@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class EnemySkeletonController : MonoBehaviour
 {
-[Header("Private")]
+    [Header("Private")]
     [SerializeField] private float attackRadius;
     [SerializeField] private float m_enemyHP;
     [SerializeField] private float m_enemyMaxHP;
@@ -15,6 +15,8 @@ public class EnemySkeletonController : MonoBehaviour
     [SerializeField] private Animator m_enemyAnim;
     [SerializeField] private Image m_healthUI;
     [SerializeField] private EnemyGenerator m_EG;
+    [SerializeField] private float m_invincibilityFrames;
+    [SerializeField] private float m_lastTimeHit;
     
     // Start is called before the first frame update
     void Start()
@@ -57,6 +59,8 @@ public class EnemySkeletonController : MonoBehaviour
         {
             Die();
         }
+        
+        m_lastTimeHit += Time.deltaTime;
     }
     
     void Die()
@@ -78,14 +82,28 @@ public class EnemySkeletonController : MonoBehaviour
     
     void TakeDamage(float amount)
     {
+        if (m_lastTimeHit < m_invincibilityFrames) {
+            return;
+        }
+        m_lastTimeHit = 0;
         m_enemyHP -= amount;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Sword") || other.gameObject.CompareTag("Axe") || other.gameObject.CompareTag("Pickaxe"))
+        if (other.gameObject.CompareTag("Sword"))
         {
-            TakeDamage(Random.Range(5.5f, 9.5f));
+            TakeDamage(Random.Range(20f, 30f));
+        }
+
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            TakeDamage(15f);
+        }
+
+        if (other.gameObject.CompareTag("Pickaxe"))
+        {
+            TakeDamage(15f);
         }
     }
 }

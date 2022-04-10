@@ -10,8 +10,7 @@ public class PlayerActions : MonoBehaviour
     public Animator m_pickAxeSwing;
     public Animator m_swordSwing;
     public Animator m_objectiveAnim;
-    public Collider[] m_toolColliders;
-    
+
     [Header("Private")] 
     [SerializeField] private Transform[] m_tools;
     [SerializeField] private KeyCode[] m_keys;
@@ -31,11 +30,6 @@ public class PlayerActions : MonoBehaviour
         m_timeSinceLastSwitch = 0f;
         m_timeSinceSwung = 3f;
         m_isPanelActive = false;
-
-        for (int i = 0; i < m_toolColliders.Length; i++)
-        {
-            m_toolColliders[i].enabled = false;
-        }
     }
 
     // Update is called once per frame
@@ -78,33 +72,27 @@ public class PlayerActions : MonoBehaviour
     {
         if (m_selectedWeapon == 0 && m_axeSwing.GetCurrentAnimatorStateInfo(0).IsName("Default") && m_timeSinceSwung > 2.25f) {
             m_axeSwing.SetBool("Swing", true);
-            m_toolColliders[0].enabled = true;
             m_timeSinceSwung = 0f;
         }
         else
         {
             m_axeSwing.SetBool("Swing", false);
-            m_toolColliders[0].enabled = false;
         }
         if (m_selectedWeapon == 1 && m_pickAxeSwing.GetCurrentAnimatorStateInfo(0).IsName("Default") && m_timeSinceSwung > 2.25f) {
             m_pickAxeSwing.SetBool("Swing", true);
-            m_toolColliders[1].enabled = true;
             m_timeSinceSwung = 0f;
         }
         else
         {
             m_pickAxeSwing.SetBool("Swing", false);
-            m_toolColliders[1].enabled = false;
         }
         if (m_selectedWeapon == 2 && m_swordSwing.GetCurrentAnimatorStateInfo(0).IsName("Default") && m_timeSinceSwung > 2.25f) {
             m_swordSwing.SetBool("Swing", true);
-            m_toolColliders[2].enabled = true;
             m_timeSinceSwung = 0f;
         }
         else
         {
             m_swordSwing.SetBool("Swing", false);
-            m_toolColliders[2].enabled = false;
         }
     }
 

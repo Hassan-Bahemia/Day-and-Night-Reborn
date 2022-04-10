@@ -13,10 +13,12 @@ public class EnemyBowController : MonoBehaviour
     [SerializeField] private float m_enemyHP;
     [SerializeField] private float m_enemyMaxHP;
     [SerializeField] private Transform m_playerTarget;
-    private NavMeshAgent m_enemyAgent;
+    [SerializeField] private NavMeshAgent m_enemyAgent;
     [SerializeField] private Animator m_enemyAnim;
     [SerializeField] private Image m_healthUI;
     [SerializeField] private EnemyGenerator m_EG;
+    [SerializeField] private float m_invincibilityFrames;
+    [SerializeField] private float m_lastTimeHit;
     
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,8 @@ public class EnemyBowController : MonoBehaviour
         {
             Die();
         }
+        
+        m_lastTimeHit += Time.deltaTime;
     }
     
     void Die()
@@ -80,14 +84,28 @@ public class EnemyBowController : MonoBehaviour
     
     void TakeDamage(float amount)
     {
+        if (m_lastTimeHit < m_invincibilityFrames) {
+            return;
+        }
+        m_lastTimeHit = 0;
         m_enemyHP -= amount;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Sword") || other.gameObject.CompareTag("Axe") || other.gameObject.CompareTag("Pickaxe"))
+        if (other.gameObject.CompareTag("Sword"))
         {
-            TakeDamage(Random.Range(5.5f, 9.5f));
+            TakeDamage(Random.Range(20f, 30f));
+        }
+
+        if (other.gameObject.CompareTag("Axe"))
+        {
+            TakeDamage(15f);
+        }
+
+        if (other.gameObject.CompareTag("Pickaxe"))
+        {
+            TakeDamage(15f);
         }
     }
 }

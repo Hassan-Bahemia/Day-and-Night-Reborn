@@ -4897,7 +4897,7 @@ GameObject:
   - component: {fileID: 4484924966860284890}
   m_Layer: 0
   m_Name: SM_Rock_Pile_01
-  m_TagString: Untagged
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 2147483647

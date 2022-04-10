@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool m_isSprinting;
     [SerializeField] private bool m_isCrouching;
     [SerializeField] private bool m_isJumping;
+    [SerializeField] private bool m_canSprint;
+    [SerializeField] private bool m_canJump;
 
     [Header("Public")] 
     public float m_speed;
@@ -57,7 +59,20 @@ public class PlayerMovement : MonoBehaviour
         }
         if (m_playerStats.m_stamina >= 100)
         {
-            m_playerStats.m_staminaCooldown = 15;
+            m_playerStats.m_staminaCooldown = 45;
+        }
+
+        if (m_playerStats.m_hunger <= 0)
+        {
+            m_playerStats.m_allowSprintOrJump = false;
+            m_canSprint = false;
+            m_canJump = false;
+        }
+        else
+        {
+            m_playerStats.m_allowSprintOrJump = true;
+            m_canSprint = true;
+            m_canJump = true;
         }
     }
 
@@ -75,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
             m_isGrounded = true;
         }
         m_playerController.Move(m_playerVelocity * Time.deltaTime);
-        if (m_isSprinting && m_isGrounded && m_playerStats.m_stamina > 0) {
+        if (m_isSprinting && m_isGrounded && m_playerStats.m_stamina > 0 && m_playerStats.m_allowSprintOrJump && m_canSprint) {
             m_playerController.Move(transform.TransformDirection(moveDirection) * m_speed * m_sprintMultiplier * Time.deltaTime);
             if (m_isSprinting) { 
                 m_playerStats.TakeStamina(1 * Time.deltaTime * 2f);
@@ -88,7 +103,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        if (m_isGrounded && !m_isJumping && m_playerStats.m_stamina > 0)
+        if (m_isGrounded && !m_isJumping && m_playerStats.m_stamina > 0 && m_playerStats.m_allowSprintOrJump && m_canJump)
         {
             m_isJumping = true;
             m_isGrounded = false;

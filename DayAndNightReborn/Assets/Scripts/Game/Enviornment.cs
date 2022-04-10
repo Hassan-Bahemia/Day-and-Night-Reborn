@@ -17,7 +17,7 @@ public class Enviornment : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_resourceHealth = 100;
+        m_resourceHealth = 50;
     }
 
     // Update is called once per frame
@@ -54,7 +54,7 @@ public class Enviornment : MonoBehaviour
         {
             if (gameObject.CompareTag("Tree"))
             {
-                DealDamage(Random.Range(2, 14));
+                DealDamage(Random.Range(10, 14));
             }
         }
 
@@ -62,7 +62,7 @@ public class Enviornment : MonoBehaviour
         {
             if (gameObject.CompareTag("Rock"))
             {
-                DealDamage(Random.Range(2, 14));
+                DealDamage(Random.Range(10, 14));
             }
         }
     }

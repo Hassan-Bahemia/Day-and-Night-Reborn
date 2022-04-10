@@ -1285,6 +1285,8 @@ MonoBehaviour:
   m_bossAgent: {fileID: 0}
   m_bossAnim: {fileID: 0}
   m_healthUI: {fileID: 0}
+  m_invincibilityFrames: 2.5
+  m_lastTimeHit: 0
 --- !u!54 &670267937081481846
 Rigidbody:
   m_ObjectHideFlags: 0
