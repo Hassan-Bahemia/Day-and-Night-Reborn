@@ -69,9 +69,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1613829282273874974}
+  - component: {fileID: 6973241956568896188}
   m_Layer: 0
   m_Name: Elbow_R
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,6 +92,19 @@ Transform:
   m_Father: {fileID: 1613829282940650039}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6973241956568896188
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1613829282273874975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.81600475, y: 0.5037753, z: 0.20000002}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1613829282305094583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1188,6 @@ GameObject:
   - component: {fileID: -1241014718519278053}
   - component: {fileID: 5705272894355078921}
   - component: {fileID: 670267937081481846}
-  - component: {fileID: 886715174}
   m_Layer: 0
   m_Name: Dark_One
   m_TagString: Boss
@@ -1209,7 +1222,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.41, y: 1.57, z: 0.39}
+  m_Size: {x: 0.41, y: 1.43, z: 0.39}
   m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!95 &1613829283448274121
 Animator:
@@ -1240,10 +1253,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 175
-  m_Acceleration: 100
+  m_Speed: 250
+  m_Acceleration: 175
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 200
   m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1288,19 +1301,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &886715174
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1613829283448274122}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.81600475, y: 0.5037753, z: 0.20000002}
-  m_Center: {x: 0.7480025, y: 1.3666008, z: 0}
 --- !u!1 &1613829283467716346
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,11 +41,8 @@ public class BossController : MonoBehaviour
         }
         
         m_bossAgent.SetDestination(m_playerTarget.position);
-
-        if (distance <= m_bossAgent.stoppingDistance)
-        {
-            FaceTarget();
-        }
+        
+        FaceTarget();
 
         if (distance < attackRadius)
         {

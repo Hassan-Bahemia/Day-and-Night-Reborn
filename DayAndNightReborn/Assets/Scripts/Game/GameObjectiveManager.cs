@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameObjectiveManager : MonoBehaviour
@@ -16,13 +17,15 @@ public class GameObjectiveManager : MonoBehaviour
     [SerializeField] private bool m_canPlayerFinish;
     [SerializeField] private bool m_isObjectiveOneComplete;
     [SerializeField] private bool m_isObjectiveTwoComplete;
-    [SerializeField] private bool m_isObjectiveThreeComplete;
+    public bool m_isObjectiveThreeComplete;
     [SerializeField] private PlayerInventory m_playerInventory;
+    [SerializeField] private TextMeshProUGUI m_escapeText;
     
     [Header("Boat Settings")]
     [SerializeField] private GameObject m_boat;
     [SerializeField] private Transform[] m_boatSpawns;
     [SerializeField] private TextMeshProUGUI m_boatText;
+    [SerializeField] private GameObject m_displayInteractMSG;
 
     [Header("Boss")] 
     [SerializeField] private GameObject m_boss;
@@ -38,6 +41,7 @@ public class GameObjectiveManager : MonoBehaviour
         m_playerInventory.m_rockText.color = Color.red;
         m_bossText.color = Color.red;
         m_boatText.color = Color.red;
+        m_escapeText.color = Color.red;
     }
 
     // Update is called once per frame
@@ -54,8 +58,8 @@ public class GameObjectiveManager : MonoBehaviour
             m_isObjectiveThreeComplete = false;
         }
 
-        m_playerInventory.m_woodText.text = $"Wood Collected: {m_playerInventory.m_woodHeld} / {m_maxWoodsNeeded}";
-        m_playerInventory.m_rockText.text = $"Rock Collected: {m_playerInventory.m_rockHeld} / {m_maxStonesNeeded}";
+        m_playerInventory.m_woodText.text = $"1.Wood Collected: {m_playerInventory.m_woodHeld} / {m_maxWoodsNeeded}";
+        m_playerInventory.m_rockText.text = $"2.Rock Collected: {m_playerInventory.m_rockHeld} / {m_maxStonesNeeded}";
     }
 
     void CheckIfObjectiveOneComplete()
@@ -90,7 +94,8 @@ public class GameObjectiveManager : MonoBehaviour
         m_isObjectiveOneComplete = false;
         m_isObjectiveTwoComplete = false;
         m_hasBoatBeenCrafted = true;
-        m_boat = Instantiate(m_boat, m_boatSpawns[Random.Range(0, m_boatSpawns.Length)].position, Quaternion.identity);
+        GameObject clone2 = Instantiate(m_boat, m_boatSpawns[Random.Range(0, m_boatSpawns.Length)].position, Quaternion.identity);
+        clone2.GetComponent<Boat>().DisplayMSG(m_displayInteractMSG);
         m_boat.transform.localScale = new Vector3(15, 15, 15);
         m_isObjectiveThreeComplete = true;
         m_boatText.color = Color.green;
@@ -104,7 +109,7 @@ public class GameObjectiveManager : MonoBehaviour
 
             if (Physics.Raycast(new Vector3(m_playerTransform.position.x + Random.Range(-60, 150), m_playerTransform.position.y + 100, m_playerTransform.position.z + Random.Range(-60, 150)), Vector3.down, out hit, Mathf.Infinity))
             {
-                GameObject clone = Instantiate(m_boss, hit.point + new Vector3(0, 5, 0), Quaternion.identity);
+                GameObject clone = Instantiate(m_boss, hit.point + new Vector3(0, 35, 0), Quaternion.identity);
             }
             m_bossTextAnim.SetBool("Show", true);
             m_bossTextAnim.SetBool("Hide", false);
@@ -113,6 +118,7 @@ public class GameObjectiveManager : MonoBehaviour
 
     void SpawnBoss()
     {
+        print("hello");
         CanSpawnFinalBoss();
     }
 
@@ -122,8 +128,17 @@ public class GameObjectiveManager : MonoBehaviour
         {
             m_canPlayerFinish = true;
             m_bossText.color = Color.green;
+            m_escapeText.color = Color.green;
             m_bossTextAnim.SetBool("Hide", true);
             m_bossTextAnim.SetBool("Show", false);
+        }
+    }
+
+    public void EndGame()
+    {
+        if (m_isFinalBossKilled)
+        {
+            SceneManager.LoadScene("Win_Scene");
         }
     }
 }

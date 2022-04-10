@@ -11,6 +11,8 @@ TagManager:
   - Pickaxe
   - Sword
   - Boss
+  - Bow
+  - Skeleton
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -23,7 +24,8 @@ public class PlayerStats : MonoBehaviour
     public float m_maxHunger;
     public TextMeshProUGUI m_hungerText;
     
-    [SerializeField] private bool m_dmgDealt;
+    [SerializeField] private float m_invincibilityFrames;
+    [SerializeField] private float m_lastTimeHit;
 
     private void Start()
     {
@@ -65,7 +67,9 @@ public class PlayerStats : MonoBehaviour
         {
             m_hunger = m_maxHunger;
         }
-        
+
+        m_lastTimeHit += Time.deltaTime;
+
     }
 
     public void TakeStamina(float amount)
@@ -82,25 +86,36 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeHealth(float amount)
     {
+        if (m_lastTimeHit < m_invincibilityFrames) {
+            return;
+        }
+        m_lastTimeHit = 0;
         m_health -= amount;
         m_healthText.text = m_health.ToString("0") + " / 100";
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Boss"))
         {
-            if (!m_dmgDealt)
-            {
-                m_dmgDealt = true;
-                TakeHealth(12);
-                m_dmgDealt = false;
-            }
+            TakeHealth(12);
+        }
+        
+
+        if (other.gameObject.CompareTag("Bow"))
+        {
+            TakeHealth(8);
+        }
+        
+        if (other.gameObject.CompareTag("Skeleton"))
+        {
+            TakeHealth(7);
         }
     }
 
     void Die()
     {
         Destroy(gameObject);
+        SceneManager.LoadScene("Death_Scene");
     }
 }
