@@ -116,6 +116,8 @@ public class PlayerStats : MonoBehaviour
     void Die()
     {
         Destroy(gameObject);
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
         SceneManager.LoadScene("Death_Scene");
     }
 }

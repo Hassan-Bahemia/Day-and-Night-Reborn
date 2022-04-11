@@ -350,6 +350,7 @@
 "Assets/Scripts/Game/MushroomStats.cs"
 "Assets/Scripts/Game/SceneLoader.cs"
 "Assets/Scripts/Game/TimeController.cs"
+"Assets/Scripts/Game/WaterDamage.cs"
 "Assets/Scripts/Grass Shaders/GrassPainter.cs"
 "Assets/Scripts/Grass Shaders/ShaderInteractor.cs"
 "Assets/Scripts/Player/PlayerActions.cs"

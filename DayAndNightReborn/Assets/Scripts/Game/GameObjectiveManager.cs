@@ -140,6 +140,8 @@ public class GameObjectiveManager : MonoBehaviour
     {
         if (m_isFinalBossKilled)
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             SceneManager.LoadScene("Win_Scene");
         }
     }

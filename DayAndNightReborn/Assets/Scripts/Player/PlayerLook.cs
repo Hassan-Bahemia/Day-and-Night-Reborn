@@ -18,6 +18,12 @@ public class PlayerLook : MonoBehaviour
       m_cam = GetComponentInChildren<Camera>();
    }
 
+   private void Start()
+   {
+      Cursor.lockState = CursorLockMode.Locked;
+      Cursor.visible = false;
+   }
+
    public void ProcessLook(Vector2 input)
    {
       float mouseX = input.x;

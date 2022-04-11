@@ -55,6 +55,7 @@
             <e p="MushroomStats.cs" t="Include" />
             <e p="SceneLoader.cs" t="Include" />
             <e p="TimeController.cs" t="Include" />
+            <e p="WaterDamage.cs" t="Include" />
           </e>
           <e p="Grass Shaders" t="Include">
             <e p="GrassPainter.cs" t="Include" />
