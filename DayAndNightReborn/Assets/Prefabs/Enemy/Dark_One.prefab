@@ -1204,7 +1204,7 @@ Transform:
   m_GameObject: {fileID: 1613829283448274122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 28.076733, y: 191.9, z: -211.55704}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_Children:
   - {fileID: 1613829282467743131}
   - {fileID: 1613829283095116997}
@@ -1253,17 +1253,17 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 7
-  m_Acceleration: 100
+  m_Speed: 50
+  m_Acceleration: 2500
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 5
+  m_StoppingDistance: 2.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.7
+  m_Height: 1.85
   m_BaseOffset: 0
-  m_WalkableMask: 1
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5705272894355078921
 MonoBehaviour:
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e562315713b7d74db5af4e86113ae02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 50
+  attackRadius: 0
   m_bossHP: 0
   m_bossMaxHP: 200
   m_playerTarget: {fileID: 0}

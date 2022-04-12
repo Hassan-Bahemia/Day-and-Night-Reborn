@@ -24,7 +24,7 @@ public class BossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackRadius = 25f;
+        attackRadius = 15f;
         m_bossHP = m_bossMaxHP;
         m_playerTarget = GameObject.Find("Player").GetComponent<Transform>();
         m_GOM = GameObject.Find("GameManager").GetComponent<GameObjectiveManager>();

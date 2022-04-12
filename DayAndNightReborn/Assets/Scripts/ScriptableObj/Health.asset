@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073e574de4cc93f4ba385b13f5f4d220, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
-  m_healthToGive: 35
+  m_healthToGive: 45
   m_staminaToGive: 10
-  m_hungerToGive: 5
+  m_hungerToGive: 25
